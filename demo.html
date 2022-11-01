@@ -8,51 +8,93 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
     <link rel="shortcut icon" href="./icon.png" type="image/x-icon">
+    <title>Mylove</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    <title>My love</title>
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btnYes {
+            background-color: #28a745;
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.4);
+        }
+
+        .btnYes:hover {
+            background-color: #218838;
+        }
+
+        .btnNo {
+            background-color: #dc3545;
+            position: absolute;
+            transition: transform 0.2s;
+        }
+
+        .btnNo:hover {
+            transform: scale(1.1);
+        }
+
+        #heart i {
+            animation: heartbeat 1s infinite;
+            color: red;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
 </head>
 
 <body>
     <div class="app">
-        <div class="card mg-10" id="card1">
+        <div class="card" id="card1">
             <div class="card__title">
-                <!-- <div class="col_third" id="heart">	
-                        <i class="fa fa-heart fa-8x"></i>
-                    </div> -->
                 <div class="card__title--name">
-                    <h1> bạn đồng ý làm ny tôi nhé?</h1>
+                    <h1> Em đồng ý làm người yêu tôi nhé? 🥺</h1>
                 </div>
             </div>
-            <div class="button__list mt-10">
-                <div class="row">
-                    <div class="col col-lg-6 mt-10">
-                        <div class="button button__message btnNo" onclick="showMess()">
-                            <span> </span>
-                        </div>
-                    </div>
-                    <div class="col col-lg-6 mt-10">
-                        <div class="button button__subscribe btnNo" onclick="showMess()">
-                            <span> OK </span>
-                        </div>
-                    </div>
-                </div>
+            <div class="button__list">
+                <button class="button btnYes" onclick="showMess()">OK ❤️</button>
+                <button class="button btnNo" id="btnNo" onmouseover="runAway()">Không 😱</button>
             </div>
         </div>
 
-        <div class="card mg-10" id="card2" style="display: none;">
-            <div class="card mg-10">
-                <div style="height: 30px;"></div>
-                <div class="card__title--name">
-                    <h1>
-                        <span style="color: red;">yêu bạn</span>
-                        <div class="col_third" id="heart">
-                            <i class="fa fa-heart fa-8x"></i>
-                        </div>
-                    </h1>
-                </div>
-                <div style="height: 30px;"></div>
+        <div class="card" id="card2" style="display: none;">
+            <div class="card__title--name">
+                <h1>
+                    <span style="color: red;">Cảm ơn em đã đồng ý 😍</span>
+                    <div class="col_third" id="heart">
+                        <i class="fa fa-heart fa-8x"></i>
+                    </div>
+                </h1>
             </div>
         </div>
     </div>
@@ -60,7 +102,15 @@
     <script>
         function showMess() {
             document.getElementById("card1").style.display = 'none';
-            document.getElementById("card2").style.display = "inline";
+            document.getElementById("card2").style.display = "block";
+        }
+
+        function runAway() {
+            let btn = document.getElementById("btnNo");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
         }
     </script>
 </body>
